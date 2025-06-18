@@ -15,11 +15,9 @@ Trigger: GET http://localhost:8096/startJob
 
 Kafka Output: Publishes a job completion event to the topic batch-job-topic after processing.
 
-📄 Sample CSV format:
+📄 CSV format:
 
-csv
-Copier
-Modifier
+
 transaction_id,account_number,transaction_date,transaction_type,transaction_amount
 1,123456789,2023-08-23 09:15:00,D,100.00
 2,987654321,2023-08-22 14:30:00,W,50.00
