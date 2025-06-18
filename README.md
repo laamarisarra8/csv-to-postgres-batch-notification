@@ -25,6 +25,7 @@ transaction_id,account_number,transaction_date,transaction_type,transaction_amou
 2,987654321,2023-08-22 14:30:00,W,50.00
 3,456789123,2023-08-21 11:45:00,D,200.00
 ...
+
 📁 2. Notification/ — Kafka Consumer, Email & WebSocket Notifier
 Function: Listens to the batch-job-topic Kafka topic.
 
@@ -60,16 +61,14 @@ Email Service (JavaMailSender)
 Docker (optional)
 
 🛠️ How to Run
-Start Kafka and PostgreSQL (use Docker if needed).
+1.Start Kafka and PostgreSQL .
 
-Run the batch project.
+2.Run the batch project.
 
-Trigger job:
+3.Trigger job:
 
-bash
-Copier
-Modifier
 GET http://localhost:8096/startJob
-Run the Notification project.
 
-Receive notifications on success (email + WebSocket frontend).
+4.Run the Notification project.
+
+5.Receive notifications on success (email + WebSocket frontend).
