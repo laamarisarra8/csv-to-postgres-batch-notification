@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Batch Job Completion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .failure {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table td, table th {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h2>Transaction Processing Notification</h2>
+</div>
+
+<p>
+    This is an automated notification regarding the execution of batch job
+    <strong th:text="${event.jobName}">jobName</strong>.
+</p>
+
+<p th:if="${isSuccess}" class="success">
+    The transaction processing job completed successfully.
+</p>
+
+<p th:unless="${isSuccess}" class="failure">
+    The transaction processing job failed to complete successfully.
+</p>
+
+<div class="details">
+    <h3>Job Details</h3>
+    <table>
+        <tr>
+            <td>Job Name:</td>
+            <td th:text="${event.jobName}">jobName</td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td th:text="${event.status}">status</td>
+        </tr>
+        <tr>
+            <td>Completion Time:</td>
+            <td th:text="${event.completionTime}">completionTime</td>
+        </tr>
+        <tr>
+            <td>Transactions Processed:</td>
+            <td th:text="${event.recordsProcessed}">0</td>
+        </tr>
+        <tr>
+            <td>Message:</td>
+            <td th:text="${event.message}">message</td>
+        </tr>
+    </table>
+</div>
+
+<p>
+    This is an automated email. Please do not reply.
+</p>
+</body>
+</html>

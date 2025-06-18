@@ -1,0 +1,39 @@
+kafka:
+  topic:
+    batch:
+      completion: batch-job-topic
+
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: com.example.batch.dto.JobCompletionEvent:com.notification.Notification.dto.JobCompletionEvent
+
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_transactions
+    username: username
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+
+server:
+  port: 8096
+#app:
+#  config:
+#    inputFile: classpath:/transaction.csv
+
